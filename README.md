@@ -32,17 +32,20 @@ my-site/
 ├── index.html                ← 主頁（卡片式目錄）
 ├── assets/
 │   └── style.css             ← 共用樣式（森林色系 tokens）
+├── camping/
+│   └── 2026-05-alishan/
+│       ├── index.html        ← 餐點規劃（深色系）
+│       └── list.html         ← 食材清單（淺色 + localStorage）
 ├── README.md
 ├── WORKFLOW.md               ← 新增頁面 SOP
 └── .gitignore
 ```
 
-**規劃中的分類資料夾**（有內容時再建）：
+**未來分類規劃**（有內容時再建）：
 
 | 資料夾 | 用途範例 |
 |---|---|
 | `weather/` | 攝影、戶外活動相關天氣工具 |
-| `camping/` | 露營活動的菜單、食材、行程 |
 | `health/` | 公開版本的家庭健康參考工具 |
 | `tools/` | 小工具雜項 |
 
