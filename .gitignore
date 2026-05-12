@@ -1,0 +1,22 @@
+# 系統檔
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude / AI 工具設定
+.claude/
+CLAUDE.md
+SESSION_LOG.md
+
+# 私人草稿區（給朋友看的對外版不該放未完成內容）
+_draft/
+_private/
+
+# 日誌
+*.log

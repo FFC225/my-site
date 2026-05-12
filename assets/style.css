@@ -1,0 +1,206 @@
+/* ========================================
+   FC's Pages — 共用樣式
+   森林色系 design tokens
+   ======================================== */
+
+:root {
+  --bg-primary: #1e2a1e;
+  --bg-card: #2a352a;
+  --bg-card-header: #344334;
+  --text-primary: #e8e6dc;
+  --text-secondary: #c5c3b8;
+  --accent-green: #a8c995;
+  --accent-warning: #d4a043;
+  --accent-danger: #c9534c;
+  --border: #3a4d3a;
+
+  --radius: 12px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei",
+    "PingFang TC", "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 24px 16px 48px;
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+header.site-header {
+  text-align: center;
+  padding: 32px 0 40px;
+}
+
+header.site-header h1 {
+  font-size: 2.4rem;
+  letter-spacing: 0.04em;
+  color: var(--accent-green);
+  margin-bottom: 12px;
+}
+
+header.site-header p.tagline {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+/* ===== Card Grid ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-green);
+}
+
+.card-header {
+  background: var(--bg-card-header);
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-header h2 {
+  font-size: 1.15rem;
+  color: var(--accent-green);
+}
+
+.card-body {
+  padding: 16px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.card-body p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.card-link {
+  display: inline-block;
+  padding: 9px 16px;
+  background: var(--accent-green);
+  color: var(--bg-primary);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  min-height: 40px;
+  line-height: 1.4;
+}
+
+.card-link:active {
+  opacity: 0.8;
+}
+
+/* ===== 占位狀態 ===== */
+.empty-state {
+  background: var(--bg-card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 40px 24px;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.empty-state h2 {
+  color: var(--accent-warning);
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+}
+
+/* ===== Footer ===== */
+footer.site-footer {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+footer.site-footer a {
+  color: var(--accent-green);
+  text-decoration: none;
+}
+
+/* ===== 通用元件（給未來內容頁用） ===== */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--accent-green);
+  color: var(--bg-primary);
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 44px;
+  line-height: 1.4;
+}
+
+.btn-secondary {
+  background: var(--bg-card-header);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.nav-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+/* ===== 響應式 ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 12px 32px;
+  }
+  header.site-header h1 {
+    font-size: 1.8rem;
+  }
+  header.site-header {
+    padding: 16px 0 24px;
+  }
+}
