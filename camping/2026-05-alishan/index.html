@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阿里山露營餐點規劃</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: #1e2a1e;
+    color: #e8e6dc;
+    padding: 20px 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  header {
+    text-align: center;
+    padding: 24px 16px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #2d3e2d, #1f2d1f);
+    border-radius: 12px;
+    border: 1px solid #3a4d3a;
+  }
+  h1 {
+    font-size: 26px;
+    color: #a8c995;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    color: #8a9c80;
+    font-size: 14px;
+  }
+  .meal {
+    background: #2a352a;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border: 1px solid #3a4d3a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .meal-header {
+    padding: 14px 18px;
+    background: #344334;
+    border-bottom: 1px solid #3a4d3a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .meal-time {
+    font-size: 13px;
+    color: #8fb37a;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  .meal-title {
+    font-size: 17px;
+    color: #e8e6dc;
+    font-weight: bold;
+    flex: 1;
+  }
+  .meal-body {
+    padding: 16px 18px;
+  }
+  .meal-desc {
+    color: #c5c3b8;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .meal-desc:last-child { margin-bottom: 0; }
+  .section-label {
+    color: #a8c995;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 14px 0 8px;
+    letter-spacing: 0.3px;
+  }
+  ol, ul {
+    padding-left: 22px;
+    color: #c5c3b8;
+    font-size: 14px;
+  }
+  ol li, ul li {
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .recipe-block {
+    background: #1f2a1f;
+    border-left: 3px solid #6b8e54;
+    padding: 12px 14px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #b8b6ab;
+  }
+  .recipe-block strong { color: #d4d2c5; }
+  .tag {
+    display: inline-block;
+    background: #3a4d3a;
+    color: #a8c995;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-right: 6px;
+    margin-top: 8px;
+  }
+  .notice {
+    background: #3a2f1f;
+    border-left: 4px solid #d4a043;
+    padding: 14px 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #d4c8a8;
+  }
+  .reminder-box {
+    background: #2a352a;
+    border: 1px solid #5a6d4a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 24px;
+  }
+  .reminder-box h2 {
+    color: #d4a043;
+    font-size: 18px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #3a4d3a;
+  }
+  .reminder-box h3 {
+    color: #a8c995;
+    font-size: 15px;
+    margin: 14px 0 8px;
+  }
+  .reminder-box h3:first-of-type { margin-top: 0; }
+  .order-table {
+    width: 100%;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #c5c3b8;
+  }
+  .order-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #3a4d3a;
+  }
+  .order-table td:first-child {
+    color: #8fb37a;
+    width: 90px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  .order-table tr:last-child td { border-bottom: none; }
+  .warning {
+    background: #3a2424;
+    border-left: 4px solid #c9534c;
+    padding: 12px 14px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #d4b8b6;
+  }
+  .warning strong { color: #e8a8a4; }
+  footer {
+    text-align: center;
+    color: #6a7960;
+    font-size: 12px;
+    margin-top: 24px;
+    padding: 16px;
+  }
+</style>
+</head>
+<body>
+
+<nav style="margin-bottom:16px;">
+  <a href="/my-site/" style="display:inline-block;color:#a8c995;text-decoration:none;padding:8px 14px;border:1px solid #3a4d3a;border-radius:8px;font-size:14px;background:#2a352a;">← 回 FC's Pages</a>
+</nav>
+
+<header>
+  <h1>🏕️ 阿里山露營餐點規劃</h1>
+  <div class="subtitle">週五夜衝 → 週日下午 · 3 人</div>
+</header>
+
+<div class="meal">
+  <div class="meal-header">
+    <span class="meal-time">週五晚上</span>
+    <span class="meal-title">🍔 麥當勞</span>
+  </div>
+  <div class="meal-body">
+    <p class="meal-desc">上山前在山下麥當勞處理完畢，抵達營地直接紮營睡覺，不另外開伙。</p>
+  </div>
+</div>
+
+<div class="meal">
+  <div class="meal-header">
+    <span class="meal-time">週六早餐</span>
+    <span class="meal-title">🥞 美式煎餅 + 培根</span>
+  </div>
+  <div class="meal-body">
+    <p class="meal-desc">用鬆餅預拌粉（加水即可的版本）煎鬆餅，平底鍋同時煎培根。淋上楓糖漿、放一塊奶油，搭配香蕉或蘋果切片。飲品配即溶咖啡或茶包。</p>
+    <p class="meal-desc">操作快、能量足。</p>
+    <span class="tag">減重期楓糖少淋</span>
+  </div>
+</div>
+
+<div class="meal">
+  <div class="meal-header">
+    <span class="meal-time">週六午餐</span>
+    <span class="meal-title">🍝 蒜香辣椒培根蘑菇義大利麵</span>
+  </div>
+  <div class="meal-body">
+    <p class="meal-desc">一鍋到底的好處理料理。培根和蘑菇耐放，不像海鮮要全程保冰，蒜香加培根油脂的香氣在山上特別誘人。</p>
+    <div class="section-label">做法</div>
+    <ol>
+      <li>義大利麵煮到比包裝時間少 1 分鐘起鍋，留一碗煮麵水備用</li>
+      <li>同鍋下橄欖油，培根煸到出油微焦</li>
+      <li>下蒜片和辣椒爆香</li>
+      <li>加蘑菇炒到出水收乾</li>
+      <li>麵下鍋，淋煮麵水讓澱粉乳化醬汁</li>
+      <li>撒黑胡椒和帕馬森起司粉拌勻</li>
+    </ol>
+  </div>
+</div>
+
+<div class="meal">
+  <div class="meal-header">
+    <span class="meal-time">週六晚餐</span>
+    <span class="meal-title">🍲 柴火壽喜燒火鍋</span>
+  </div>
+  <div class="meal-body">
+    <p class="meal-desc">山上夜冷熱湯最對味，操作極簡單，剩湯隔天還能煮部隊鍋。</p>
+    <div class="recipe-block">
+      <strong>壽喜燒醬底比例</strong><br>
+      醬油 : 味醂 : 米酒 : 水 ≈ 3 : 2 : 1.5 : 4<br>
+      再加二砂調整甜度
+    </div>
+    <div class="section-label">鍋料</div>
+    <ul>
+      <li>火鍋牛肉片（梅花或霜降）</li>
+      <li>板豆腐、蒟蒻絲</li>
+      <li>香菇、金針菇</li>
+      <li>大白菜、蔥段</li>
+    </ul>
+    <div class="section-label">收尾</div>
+    <ul>
+      <li>烏龍麵下鍋吸湯</li>
+      <li>生蛋拿來沾肉（日式正統吃法）</li>
+      <li>備白飯中和甜鹹味</li>
+    </ul>
+  </div>
+</div>
+
+<div class="meal">
+  <div class="meal-header">
+    <span class="meal-time">週六宵夜</span>
+    <span class="meal-title">🍪 零食墊檔</span>
+  </div>
+  <div class="meal-body">
+    <p class="meal-desc">靠帶上山的零食零嘴解決，搭配熱咖啡或熱茶在火堆旁聊天。</p>
+  </div>
+</div>
+
+<div class="meal">
+  <div class="meal-header">
+    <span class="meal-time">週日早餐</span>
+    <span class="meal-title">🍞 吐司簡單吃</span>
+  </div>
+  <div class="meal-body">
+    <p class="meal-desc">厚片吐司抹花生醬、煉乳或果醬（擇一），搭配即溶咖啡或茶。剩下的香蕉可以一起吃掉。</p>
+    <p class="meal-desc">不用洗鍋、5 分鐘解決、垃圾少，為拔營做準備。</p>
+  </div>
+</div>
+
+<div class="meal">
+  <div class="meal-header">
+    <span class="meal-time">週日午餐</span>
+    <span class="meal-title">🍜 韓式部隊鍋（清空冰桶）</span>
+  </div>
+  <div class="meal-body">
+    <p class="meal-desc">最後一餐，把剩下的火鍋料、培根全部一鍋解決。</p>
+    <div class="section-label">做法</div>
+    <ol>
+      <li>用剩下的壽喜燒湯底或清水當基底</li>
+      <li>所有剩料下鍋（火鍋料、培根、午餐肉切片）</li>
+      <li>加韓式辛拉麵調味包 + 韓式辣醬</li>
+      <li>滾後下辛拉麵</li>
+      <li>起鍋前鋪起司片融化</li>
+    </ol>
+    <div class="notice">⚠️ 份量大、味道濃，鈉含量高，記得多喝水</div>
+  </div>
+</div>
+
+<div class="reminder-box">
+  <h2>⚠️ 重要提醒</h2>
+
+  <h3>📦 保冰策略</h3>
+  <ul>
+    <li>牛肉用冷凍狀態出發，當天然保冰塊</li>
+    <li>保冰時間超過 60 小時，週日食材以耐放品為主（罐頭、起司、泡麵）</li>
+    <li>易腐食材優先在週六用完</li>
+  </ul>
+
+  <h3>🔄 食材使用順序</h3>
+  <table class="order-table">
+    <tr><td>週六早</td><td>培根、雞蛋</td></tr>
+    <tr><td>週六午</td><td>蘑菇、培根（剩餘）</td></tr>
+    <tr><td>週六晚</td><td>牛肉片、葉菜類、豆腐、菇類</td></tr>
+    <tr><td>週日早</td><td>吐司、香蕉</td></tr>
+    <tr><td>週日午</td><td>罐頭、起司、泡麵、剩料</td></tr>
+  </table>
+</div>
+
+<footer>
+  搭配「阿里山露營食材清單」一起使用
+</footer>
+
+</body>
+</html>
