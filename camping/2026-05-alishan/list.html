@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阿里山露營食材清單</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: #f5f5f0;
+    color: #2c2c2c;
+    padding: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 8px;
+    color: #2d5016;
+  }
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #4a7c2e;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  button:hover { background: #3a6024; }
+  button.reset { background: #999; }
+  button.reset:hover { background: #777; }
+  .progress {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #555;
+  }
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: #4a7c2e;
+    transition: width 0.3s;
+  }
+  details {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  summary {
+    padding: 14px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #e8f0e0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "▼";
+    font-size: 12px;
+    color: #666;
+    transition: transform 0.2s;
+  }
+  details[open] summary::after { transform: rotate(180deg); }
+  .category-count {
+    font-size: 12px;
+    color: #666;
+    font-weight: normal;
+    margin-left: auto;
+    margin-right: 12px;
+  }
+  ul { list-style: none; padding: 8px 16px 16px; }
+  li {
+    display: flex;
+    align-items: center;
+    padding: 10px 4px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  li:last-child { border-bottom: none; }
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: #4a7c2e;
+    flex-shrink: 0;
+  }
+  label {
+    cursor: pointer;
+    flex: 1;
+    font-size: 15px;
+  }
+  label.done {
+    text-decoration: line-through;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<nav style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+  <a href="/my-site/" style="display:inline-block;color:#2d5016;text-decoration:none;padding:8px 14px;border:1px solid #c8d4b8;border-radius:8px;font-size:14px;background:#fff;">← 回 FC's Pages</a>
+  <a href="index.html" style="display:inline-block;color:#2d5016;text-decoration:none;padding:8px 14px;border:1px solid #c8d4b8;border-radius:8px;font-size:14px;background:#fff;">🍽️ 看餐點規劃</a>
+</nav>
+
+<h1>🏕️ 阿里山露營食材清單</h1>
+<p class="subtitle">週五夜衝 → 週日下午</p>
+
+<div class="controls">
+  <button onclick="expandAll()">展開全部</button>
+  <button onclick="collapseAll()">收合全部</button>
+  <button class="reset" onclick="resetAll()">清除勾選</button>
+</div>
+
+<div class="progress">
+  <span id="progressText">已完成 0 / 0</span>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<details open>
+  <summary>🥩 生鮮（最後採購，保冰）<span class="category-count"></span></summary>
+  <ul>
+    <li><input type="checkbox" id="i1"><label for="i1">培根</label></li>
+    <li><input type="checkbox" id="i2"><label for="i2">火鍋牛肉片（梅花或霜降）</label></li>
+    <li><input type="checkbox" id="i3"><label for="i3">蘑菇</label></li>
+    <li><input type="checkbox" id="i4"><label for="i4">板豆腐</label></li>
+    <li><input type="checkbox" id="i5"><label for="i5">蒟蒻絲</label></li>
+    <li><input type="checkbox" id="i6"><label for="i6">香菇</label></li>
+    <li><input type="checkbox" id="i7"><label for="i7">金針菇</label></li>
+    <li><input type="checkbox" id="i8"><label for="i8">大白菜</label></li>
+    <li><input type="checkbox" id="i9"><label for="i9">蔥</label></li>
+    <li><input type="checkbox" id="i10"><label for="i10">雞蛋</label></li>
+  </ul>
+</details>
+
+<details open>
+  <summary>🥬 蔬果<span class="category-count"></span></summary>
+  <ul>
+    <li><input type="checkbox" id="i11"><label for="i11">蒜頭</label></li>
+    <li><input type="checkbox" id="i12"><label for="i12">辣椒</label></li>
+    <li><input type="checkbox" id="i13"><label for="i13">香蕉</label></li>
+    <li><input type="checkbox" id="i14"><label for="i14">蘋果</label></li>
+  </ul>
+</details>
+
+<details open>
+  <summary>🍝 主食 / 麵類<span class="category-count"></span></summary>
+  <ul>
+    <li><input type="checkbox" id="i15"><label for="i15">義大利麵</label></li>
+    <li><input type="checkbox" id="i16"><label for="i16">烏龍麵</label></li>
+    <li><input type="checkbox" id="i17"><label for="i17">厚片吐司</label></li>
+    <li><input type="checkbox" id="i18"><label for="i18">韓式辛拉麵</label></li>
+    <li><input type="checkbox" id="i19"><label for="i19">鬆餅預拌粉（加水即可）</label></li>
+    <li><input type="checkbox" id="i20"><label for="i20">白米</label></li>
+  </ul>
+</details>
+
+<details open>
+  <summary>🥫 罐頭 / 常溫食材<span class="category-count"></span></summary>
+  <ul>
+    <li><input type="checkbox" id="i21"><label for="i21">午餐肉</label></li>
+    <li><input type="checkbox" id="i22"><label for="i22">起司片</label></li>
+    <li><input type="checkbox" id="i23"><label for="i23">帕馬森起司粉</label></li>
+    <li><input type="checkbox" id="i24"><label for="i24">奶油</label></li>
+    <li><input type="checkbox" id="i25"><label for="i25">花生醬 / 煉乳 / 果醬（擇一）</label></li>
+  </ul>
+</details>
+
+<details open>
+  <summary>🧂 調味料<span class="category-count"></span></summary>
+  <ul>
+    <li><input type="checkbox" id="i26"><label for="i26">醬油</label></li>
+    <li><input type="checkbox" id="i27"><label for="i27">味醂</label></li>
+    <li><input type="checkbox" id="i28"><label for="i28">米酒或清酒</label></li>
+    <li><input type="checkbox" id="i29"><label for="i29">二砂</label></li>
+    <li><input type="checkbox" id="i30"><label for="i30">韓式辣醬</label></li>
+    <li><input type="checkbox" id="i31"><label for="i31">楓糖漿</label></li>
+    <li><input type="checkbox" id="i32"><label for="i32">橄欖油</label></li>
+    <li><input type="checkbox" id="i33"><label for="i33">黑胡椒</label></li>
+    <li><input type="checkbox" id="i34"><label for="i34">鹽</label></li>
+  </ul>
+</details>
+
+<details open>
+  <summary>☕ 飲品 / 零食<span class="category-count"></span></summary>
+  <ul>
+    <li><input type="checkbox" id="i35"><label for="i35">即溶咖啡 / 茶包</label></li>
+    <li><input type="checkbox" id="i36"><label for="i36">飲用水</label></li>
+    <li><input type="checkbox" id="i37"><label for="i37">零食零嘴</label></li>
+  </ul>
+</details>
+
+<script>
+  const STORAGE_KEY = 'alishan_camping_food_v2';
+
+  function updateProgress() {
+    const all = document.querySelectorAll('input[type="checkbox"]');
+    const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+    document.getElementById('progressText').textContent = `已完成 ${checked.length} / ${all.length}`;
+    document.getElementById('progressFill').style.width = (checked.length / all.length * 100) + '%';
+
+    document.querySelectorAll('details').forEach(detail => {
+      const items = detail.querySelectorAll('input[type="checkbox"]');
+      const done = detail.querySelectorAll('input[type="checkbox"]:checked');
+      const countEl = detail.querySelector('.category-count');
+      if (countEl) countEl.textContent = `${done.length} / ${items.length}`;
+    });
+  }
+
+  function saveState() {
+    const state = {};
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      state[cb.id] = cb.checked;
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch(e) {}
+  }
+
+  function loadState() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      const state = JSON.parse(saved);
+      Object.keys(state).forEach(id => {
+        const cb = document.getElementById(id);
+        if (cb) {
+          cb.checked = state[id];
+          if (state[id]) cb.nextElementSibling.classList.add('done');
+        }
+      });
+    } catch(e) {}
+  }
+
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      cb.nextElementSibling.classList.toggle('done', cb.checked);
+      updateProgress();
+      saveState();
+    });
+  });
+
+  function expandAll() {
+    document.querySelectorAll('details').forEach(d => d.open = true);
+  }
+  function collapseAll() {
+    document.querySelectorAll('details').forEach(d => d.open = false);
+  }
+  function resetAll() {
+    if (!confirm('確定要清除所有勾選嗎？')) return;
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.checked = false;
+      cb.nextElementSibling.classList.remove('done');
+    });
+    updateProgress();
+    saveState();
+  }
+
+  loadState();
+  updateProgress();
+</script>
+
+</body>
+</html>
